@@ -1,0 +1,60 @@
+.Mylist{
+    position: relative;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0 10px;
+    &-null{
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    &::-webkit-scrollbar{
+        width: 5px;
+    }
+    &::-webkit-scrollbar-thumb{
+        border-radius: 5px;
+        background: #929898;
+    }
+    &::-webkit-scrollbar-track{
+        border-radius: 5px;
+        background-color: #505252;
+    }
+    &-content{
+        overflow: hidden;
+        a{
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .Mylist-item{
+            display: inline-block;
+            margin: 20px;
+            width: calc((100% - 160px)/4);
+            text-align: center;
+            cursor: pointer;
+            .Mylist-item-img{
+                width: 100%;
+            }
+            .Mylist-item-name{
+                margin-top: 10px;
+                font-size: 14px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            &:hover{
+                .Top-item-name{
+                    color: #fff;
+                }
+            }
+            @media screen and (min-width: 1200px){
+                width: calc((100% - 200px) / 5);
+            }
+            @media screen and (min-width: 1600px){
+                width: calc((100% - 240px) / 6);
+            }
+        }
+    }
+}

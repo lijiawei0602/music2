@@ -1,0 +1,127 @@
+.App {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.App-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  color: #fff;
+}
+
+.App-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.App-login {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  line-height: 30px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: hsla(0,0%,100%,.6);
+}
+
+.App-login:hover{
+  color: white;
+}
+.login-bg{
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1999;
+  background-color: rgba(0, 0, 0, .6);
+}
+.login-box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, .6);
+  border-radius: 5px;
+  z-index: 2000;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+.login-box-title{
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.login-box-mobile{
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: block;
+  width: 100%;
+  height: 35px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  outline: 0;
+  color: white;
+  border: 1px solid hsla(0,0%,100%,.6);
+  background: transparent;
+}
+.login-box-pass{
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: block;
+  width: 100%;
+  height: 35px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  outline: 0;
+  color: white;
+  border: 1px solid hsla(0,0%,100%,.6);
+  background: transparent;
+}
+.login-box-btn{
+  padding: 10px 20px;
+  color: #fff;
+  border: 1px solid  hsla(0, 0, 100%, .6);
+  cursor: pointer;
+  float: right;
+  margin-left: 20px;
+  background-color: transparent;
+}
+.login-succ{
+  position: absolute;
+  top: 50%;
+  line-height: 39px;
+  right: 20px;
+  transform: translateY(-50%);
+  color: hsla(0,0%,100%,.6);
+}
+.user{
+  float: left;
+  margin-right: 15px;
+  text-align: right;
+  cursor: pointer;
+}
+.user-img{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  border-radius: 50%;
+}
+.user-name{
+  cursor: pointer;
+  margin-left: 35px;
+  color: #fff;
+}
+.user-exit{
+  cursor: pointer;
+  float: left;
+}

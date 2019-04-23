@@ -1,0 +1,39 @@
+.Info{
+    position: relative;
+    text-align: center;
+    color: hsla(0,0%,100%,.6);
+    &-img{
+        position: relative;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        img{
+            width: 100%;
+        }
+        &:after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 180px;
+            background: url("../img/disk.png") 0 0 no-repeat;
+        }
+    }
+    &-name{
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+    }
+    &-author{
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+    }
+    &-album{
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+    }
+}
