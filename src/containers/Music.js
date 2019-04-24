@@ -13,7 +13,8 @@ class Music extends Component{
     constructor(props){
         super(props);
         this.state = {
-            currentBuffer: 0
+            currentBuffer: 0,
+            first: true,
         };
         this.changeLayout = this.changeLayout.bind(this);
         this.prevClick = this.prevClick.bind(this);
@@ -70,25 +71,31 @@ class Music extends Component{
             }
         }
         if(nextProps.musicUrl !== this.props.musicUrl){
+            console.log(this.refs.audio);
             this.refs.audio.src = nextProps.musicUrl;
         }
         if(nextProps.audioState){
             const audio = this.refs.audio;
-            let currentTime;
-
-            audio.addEventListener("timeupdate", (function(){
-                let bufferIndex = audio.buffered.length;
-                if(bufferIndex > 0 && audio.buffered !== undefined) {
-                    let buffer = audio.buffered.end(bufferIndex - 1) / audio.duration;
-                    currentTime = audio.currentTime;
-                    dispatch(updateCurrentBuffer(buffer));
-                }
-                dispatch(updateCurrentTime(currentTime));
-                //判断是否播放完毕
-                if(audio.ended){
-                    this.changeMode();
-                }
-            }).bind(this),false);
+            let currentTime = 0;
+            if (this.state.first) {
+                audio.addEventListener("timeupdate", (function(){
+                    let bufferIndex = audio.buffered.length;
+                    if(bufferIndex > 0 && audio.buffered !== undefined) {
+                        let buffer = audio.buffered.end(bufferIndex - 1) / audio.duration;
+                        currentTime = audio.currentTime;
+                        dispatch(updateCurrentBuffer(buffer));
+                    }
+                    dispatch(updateCurrentTime(currentTime));
+                    //判断是否播放完毕
+                    // console.log(audio.currentTime, audio.duration);
+                    if(audio.currentTime + 1 >= audio.duration){
+                        this.changeMode();
+                    }
+                }).bind(this),false);
+                this.setState({
+                    first: false,
+                });
+            }
 
             if(nextProps.audioState === "play"){
                 audio.play();
@@ -136,6 +143,7 @@ class Music extends Component{
         const { dispatch } = this.props;
         let index = this.props.currentIndex;
         let modeArr = ["order", "loop", "random", "list-loop"];
+        console.log(index, this.props.audioMode);
         switch(this.props.audioMode){
           case modeArr[0]:
             dispatch(updateCurrentIndex(index + 1));
@@ -198,6 +206,7 @@ class Music extends Component{
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log(state.playlist.items);
     return {
         currentSong: state.currentSong.currentSong,
         currentTime: state.currentSong.currentTime,

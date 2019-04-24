@@ -1,7 +1,7 @@
 // import fetch from 'isomorphic-fetch';
 import axios from 'axios';
 
-const URL = `http://localhost:3300`;
+const URL = process.env.NODE_ENV === 'development' ? `http://localhost:3300` : 'http://lijiawei.com.cn:3300';
 // const URL = `http://lijiawei.com.cn:3300`;
 
 //排行榜歌曲

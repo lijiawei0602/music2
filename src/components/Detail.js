@@ -38,9 +38,9 @@ class Detail extends Component{
                 dispatch(switchAudio("play"));
             }
         }else{
-            let newPlaylist =[item, ...this.props.playlist];
+            let newPlaylist =[...this.props.items];
             dispatch(updatePlayList(newPlaylist));
-            dispatch(updateCurrentIndex(0));
+            dispatch(updateCurrentIndex(index));
         }
         this.setState({
             perIndex: index

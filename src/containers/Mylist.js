@@ -26,14 +26,14 @@ class Mylist extends Component{
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        return nextProps.list !== this.props.list;
+        return nextProps.list !== this.props.list || this.props.res !== nextProps.res;
     }
 
     componentWillReceiveProps(nextProps){
-        // if(nextProps.userid !== -1){
-        //     const { dispatch } = this.props;
-        //     dispatch(fetchUserPlayList(nextProps.userid));
-        // }
+        if(nextProps.userid !== this.props.userid ){
+            const { dispatch } = this.props;
+            dispatch(fetchUserPlayList(nextProps.userid));
+        }
         if(nextProps.list !== this.props.list){
             this.setState({
                 isShow: false

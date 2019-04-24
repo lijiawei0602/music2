@@ -59,7 +59,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">在线音乐播放器</h1>
           {
-            this.props.res === undefined
+            this.props.res === undefined || this.props.res.code !== 200
             ?
             <div className="App-login" onClick={this.showBox} ref="loginBtn">登录</div>
             :
@@ -76,6 +76,12 @@ class App extends Component {
               <div className="login-box-title">手机号登录</div>
               <input type="number" ref="mobile" autoFocus="autofocus" className="login-box-mobile" placeholder="请输入手机号" />
               <input type="password" ref="pass" className="login-box-pass" placeholder="请输入相应的密码" />
+              {
+                this.props.res && this.props.res.code !== 200 ?
+                <span style={{color: 'red', fontSize: '12px', position: 'relative', top: '-10px' }}>账号密码错误</span>
+                :
+                null
+              }
               <button className="login-box-btn" onClick={this.close}>关闭</button>
               <button className="login-box-btn" onClick={this.login}>登录</button>
             </div>
