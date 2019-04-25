@@ -70,8 +70,7 @@ class Music extends Component{
                 dispatch(fetchMusicUrl(id));
             }
         }
-        if(nextProps.musicUrl !== this.props.musicUrl){
-            console.log(this.refs.audio);
+        if(nextProps.musicUrl !== this.props.musicUrl && this.refs.audio){
             this.refs.audio.src = nextProps.musicUrl;
         }
         if(nextProps.audioState){
@@ -87,8 +86,9 @@ class Music extends Component{
                     }
                     dispatch(updateCurrentTime(currentTime));
                     //判断是否播放完毕
-                    // console.log(audio.currentTime, audio.duration);
                     if(audio.currentTime + 1 >= audio.duration){
+                        dispatch(switchAudio("pause"));
+                        audio.currentTime = 0;
                         this.changeMode();
                     }
                 }).bind(this),false);
@@ -143,7 +143,6 @@ class Music extends Component{
         const { dispatch } = this.props;
         let index = this.props.currentIndex;
         let modeArr = ["order", "loop", "random", "list-loop"];
-        console.log(index, this.props.audioMode);
         switch(this.props.audioMode){
           case modeArr[0]:
             dispatch(updateCurrentIndex(index + 1));
@@ -206,7 +205,6 @@ class Music extends Component{
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state.playlist.items);
     return {
         currentSong: state.currentSong.currentSong,
         currentTime: state.currentSong.currentTime,

@@ -270,7 +270,6 @@ class Bar extends Component{
         if(!this.props.currentSong){
             return null;
         }
-        console.log('xx', this.props.items, this.props.currentIndex);
         return (
             <div className="Bar">
                 <div className="Bar-btn">
